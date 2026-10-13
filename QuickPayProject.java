@@ -1,23 +1,104 @@
+
 import java.util.*;
-public class QuickPayProject {
+public class  QuickPayProject {
     static Scanner input = new Scanner(System.in);
     static int UserCount = 0;
+     static double []Sbalance = new double [999];
+    static boolean []ActiveAccount=new boolean [999];
+    static int Tcount=0;
+    //Tcount = transaction count
+    static int [] tIDS = new int[999];
+    //tIDS=Transactions IDS
+    static double [] Tamounts =new double[999];
+    //Tamounts = Transaction amounts
+    static boolean [] Tresult = new boolean[999];
+    // Tresult = Transaction result
+    static int [] Tsenders= new int[999];
+    //Tsenders = Transaction senders
+    static int [] Treceivers= new int[999];
+    //Treceivers = Transaction receivers
     static String[] Usernames = new String[100];
     static String[] Emails = new String[100];
     static String[] UserPassword = new String[100];
     static int[] PhoneNumbers = new int[100];
     static int[] UserIDs = new int[100];
     static int Id = 100;
-
+static boolean CanTrans(double Tbalance,double Sbalance,boolean ActiveAccount){
+    //Tbalance = transfer balance
+    //Sbalance = sender balance
+    //ActiveAccount = sender account status
+    //دي الاختصرات الي هستخدمها في الكود عشان مطولش الكلام
+    if(!ActiveAccount){
+        System.out.println("your Account is blocked");
+        return false;
+    }
+    //دا الجزء الي بيشوف حاله الحساب لو مفعل او لا
+    if (Tbalance<=0||Tbalance>Sbalance){
+        System.out.println("invalid transfer amount");
+        return false;
+    }
+    // دا الجزء الي بيشوف لو المبلغ الي هيتبعت اكبر من 0 ولا لا وبرضوا بيشوف لو المبلغ الي هيتبعت اكبر من المبلغ الي في الحساب ولا لا
+    return true;
+    }  
     public static void AddUser (String name , String Passwords , String Email, int PhoneNumber ){
         UserIDs[UserCount] = Id;
         Usernames[UserCount] = name;
         Emails[UserCount] = Email;
         UserPassword[UserCount] = Passwords;
         PhoneNumbers[UserCount] = PhoneNumber;
+        Sbalance[UserCount] = 0.0;
+        ActiveAccount[UserCount] = true;
         UserCount++;
         Id++;
     }
+    static void Trans (int Sindex,int Rindex,double amount){
+    //Sindex = sender index
+    //Rindex = receiver index
+    //Trans = 
+if (Sindex<0|| Sindex >= UserCount ||Rindex<0||Rindex>= UserCount ){
+    System.out.println("invalid account index");
+    Rtransaction(Sindex, Rindex, amount, false);
+return;
+}
+
+if (!ActiveAccount[Rindex]){
+    System.out.println("receiver account is blocked");
+    Rtransaction(Sindex, Rindex, amount, false);
+    return;
+}
+if(Sindex==Rindex){
+    System.out.println("can,t transfer to the same account");
+    Rtransaction(Sindex, Rindex, amount, false);
+    return;
+}
+if(!CanTrans(amount,Sbalance[Sindex],ActiveAccount[Sindex])){
+    Rtransaction(Sindex, Rindex, amount, false);
+    return;
+}
+//علشان نتاكد ان الحساب ميبعتش لنفسه ونتاكد ان حساب المرسل نشط ومعاه فلوس كفايه
+Sbalance[Sindex]-=amount;
+Sbalance[Rindex]+=amount;
+//علشلن نخصم من الي بيبعت ونزود عند الي بيستلم الفلوس
+Rtransaction(Sindex, Rindex, amount, true);
+System.out.println("transfer successful");
+System.out.println("sender balance: "+Sbalance[Sindex]);
+System.out.println("receiver balance: "+Sbalance[Rindex]);
+
+}
+static void Rtransaction(int Sindex,int Rindex,double amount,boolean result){
+        //Rtranactions=
+        if (Tcount>=tIDS.length){
+            System.out.println("Transaction history is full");
+            return;
+        }
+    //دا الجزء الي بيضيف المعاملات الي حصلت في الحساب وبيشوف لو اتملي ولا لسه 
+    tIDS[Tcount]=Tcount+1;
+    Tamounts[Tcount]=amount;
+    Tresult[Tcount]=result;
+    Tsenders[Tcount]=Sindex;
+    Treceivers[Tcount]=Rindex;
+    Tcount++;
+}
     public static void userPanel () {
         boolean isRunning = true;
         while (isRunning) {
