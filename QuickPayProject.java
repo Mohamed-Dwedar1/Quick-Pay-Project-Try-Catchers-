@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class  QuickPayProject {
     static Scanner input = new Scanner(System.in);
@@ -85,6 +84,28 @@ System.out.println("sender balance: "+Sbalance[Sindex]);
 System.out.println("receiver balance: "+Sbalance[Rindex]);
 
 }
+static int Freciver (int PhoneNumber){
+    //Freciver = find reciver
+    for (int i = 0 ; i < UserCount ; i++) {
+        if (PhoneNumbers[i] == PhoneNumber) {
+            return i;
+        }
+    }
+    return -1;
+}
+//الجزء ده بيشوف لو الرقم الي دخلته موجود في الحسابات ولا لا وبيرجعلك الاي اندكس بتاعه لو موجود و بيرجعلك -1 لو مش موجود
+static void TransByPhone(int Sindex){
+    System.out.println("Enter the Phone Number of the Receiver : ");
+    int PhoneNumber = input.nextInt();
+    int Rindex = Freciver(PhoneNumber);
+    if (Rindex == -1) {
+        System.out.println("Receiver Not Found [❌]");
+        return;
+    }
+    System.out.println("Enter the Amount to Transfer : ");
+    double amount = input.nextDouble();
+    Trans(Sindex, Rindex, amount);
+}
 static void Rtransaction(int Sindex,int Rindex,double amount,boolean result){
         //Rtranactions=
         if (Tcount>=tIDS.length){
@@ -98,6 +119,34 @@ static void Rtransaction(int Sindex,int Rindex,double amount,boolean result){
     Tsenders[Tcount]=Sindex;
     Treceivers[Tcount]=Rindex;
     Tcount++;
+}
+static void STransHistory(int Sindex){
+    //STransHistory = Show Transaction History
+    boolean Found = false;
+    for (int i = 0 ; i < Tcount ; i++) {
+        if (Tsenders[i] == Sindex || Treceivers[i] == Sindex) {
+            Found = true;
+            System.out.println("Transaction ID: " + tIDS[i]);
+            if (Tsenders[i] == Sindex) {
+                System.out.println ("Transaction Type: Sent");
+                System.out.println("Receiver: " + Usernames[Treceivers[i]]);
+            } else {
+                System.out.println("Transaction Type: Received");
+                System.out.println("Sender: " + Usernames[Tsenders[i]]);
+            }
+            System.out.println("Amount: " + Tamounts[i]);
+            if (Tresult[i]) {
+                System.out.println("Result: Successful");
+            } else {
+                System.out.println("Result: Failed");
+            }
+            System.out.println("--------------------------------------------------------------");
+        }
+        //الحزء ده بيشوف لو الحساب ده بعت او استلم فلوس وبيطبع كل التفاصيل بتاعت المعاملة
+    }
+    if (!Found) {
+        System.out.println("No Transactions Found [❌]");
+    }
 }
     public static void userPanel () {
         boolean isRunning = true;
@@ -131,7 +180,7 @@ static void Rtransaction(int Sindex,int Rindex,double amount,boolean result){
                     for (int i = 0 ; i < UserCount ; i++) {
                         if (Usernames[i].equalsIgnoreCase(LoginUserName) && UserPassword[i].equalsIgnoreCase(LoginPassword)) {
                             System.out.println("Login Successfully ✅ Welcome" + Usernames[i] + "\"Your Id is \"" + UserIDs[i]);
-                            UserOptions();
+                            UserOptions(i);
                         }
                         if (!UserFound) {
                             System.out.println("Incorrect Username Or Password [❌]");
@@ -223,7 +272,7 @@ static void Rtransaction(int Sindex,int Rindex,double amount,boolean result){
         }
     }
 }
-public static void UserOptions() {
+public static void UserOptions(int Sindex) {
     System.out.println("\n=============== User Panel ===============");
     System.out.println("1.Show Balance ");
     System.out.println("2. Transfer Money ");
@@ -242,10 +291,10 @@ public static void UserOptions() {
             //
             break;
         case 2 :
-            //
+            TransByPhone(Sindex);
             break;
         case 3 :
-            //
+            STransHistory(Sindex);
             break;
         case 4 :
             //
@@ -309,3 +358,4 @@ public static void UserOptions() {
                  }
          }
 }
+
