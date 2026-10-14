@@ -39,7 +39,7 @@ static boolean CanTrans(double Tbalance,double Sbalance,boolean ActiveAccount){
     // دا الجزء الي بيشوف لو المبلغ الي هيتبعت اكبر من 0 ولا لا وبرضوا بيشوف لو المبلغ الي هيتبعت اكبر من المبلغ الي في الحساب ولا لا
     return true;
     }  
-    public static void AddUser (String name , String Passwords , String Email, int PhoneNumber ){
+    public static void AddUser (String name , String Passwords , String Email, String PhoneNumber ){
         UserIDs[UserCount] = Id;
         Usernames[UserCount] = name;
         Emails[UserCount] = Email;
@@ -161,19 +161,19 @@ static void STransHistory(int Sindex){
                 case 1 :
                     System.out.println("\n=========== Welcome To Account Register ===========");
                     System.out.println("Please Enter Your User Name :");
-                    String name = input.next();
+                    String name = input.nextLine();
                     System.out.println("Please Enter Your Password :");
                     String pass = input.next();
                     System.out.println("Please Enter Your Email Address :");
                     String email = input.next();
                     System.out.println("Enter Your Phone Number : ");
-                    int Phone = input.nextInt();
+                    String Phone = input.nextInt();
                     AddUser( name ,  pass , email , Phone);
                     System.out.println("Your Account Has Been Registered Successfully ✅ ");
                         break;
                 case 2 :
                    LogInmenu();
-                    String LoginUserName = input.next();
+                    String LoginUserName = input.nextLine();
                     System.out.println("Enter Your Password :");
                     String LoginPassword = input.next();
                     boolean UserFound = false;
