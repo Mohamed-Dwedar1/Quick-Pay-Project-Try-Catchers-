@@ -167,7 +167,7 @@ static void STransHistory(int Sindex){
                     System.out.println("Please Enter Your Email Address :");
                     String email = input.next();
                     System.out.println("Enter Your Phone Number : ");
-                    String Phone = input.nextInt();
+                    String Phone = input.nextLine();
                     AddUser( name ,  pass , email , Phone);
                     System.out.println("Your Account Has Been Registered Successfully ✅ ");
                         break;
@@ -177,16 +177,20 @@ static void STransHistory(int Sindex){
                     System.out.println("Enter Your Password :");
                     String LoginPassword = input.next();
                     boolean UserFound = false;
+                    int LoggedInIndex = -1;
                     for (int i = 0 ; i < UserCount ; i++) {
                         if (Usernames[i].equalsIgnoreCase(LoginUserName) && UserPassword[i].equalsIgnoreCase(LoginPassword)) {
-                            System.out.println("Login Successfully ✅ Welcome" + Usernames[i] + "\"Your Id is \"" + UserIDs[i]);
-                            UserOptions(i);
-                        }
-                        if (!UserFound) {
-                            System.out.println("Incorrect Username Or Password [❌]");
+                            UserFound = true;
+                            LoggedInIndex = i;
                             break;
                         }
+                        if (UserFound) {
+                           System.out.println("Login Successfully ✅ Welcome" + Usernames[i] + "\"Your Id is \"" + UserIDs[i]);
+                            UserOptions(LoggedInIndex);
+                        } else {
+                            System.out.println("Incorrect Username Or Password [❌]");
                     }
+                        break;
                 case 3 :
                     isRunning = false;
                         MainMenu();
@@ -331,11 +335,11 @@ public static void UserOptions(int Sindex) {
          }
          public static void main(String[] args) {
              int Choice = 0;
-             AddUser("Mohamed" , "1234" , "Mohamed@gmail.com" , 01223344556);
-             AddUser("Ahmed" , "12345" , "Ahmed@gmail.com"  , 01122334456);
-             AddUser("Nour" , "123456" , "Nour@gmail.com" , 01112233445);
-             AddUser("Arwa" , "1234567" , "Arwa@gmail.com" , 01111223344);
-             AddUser("Yasmeen" , "12345678" , "Yasmeen@gmail.com" , 01224455667);
+             AddUser("Mohamed" , "1234" , "Mohamed@gmail.com" , "01223344556");
+             AddUser("Ahmed" , "12345" , "Ahmed@gmail.com"  , "01122334456");
+             AddUser("Nour" , "123456" , "Nour@gmail.com" , "01112233445");
+             AddUser("Arwa" , "1234567" , "Arwa@gmail.com" , "01111223344");
+             AddUser("Yasmeen" , "12345678" , "Yasmeen@gmail.com" , "01224455667");
              while (Choice != 3) {
                             MainMenu();
                  // هنا ده علشان اليوزر يدخل بنفسه رقم علشان يستعمل البرنامج
