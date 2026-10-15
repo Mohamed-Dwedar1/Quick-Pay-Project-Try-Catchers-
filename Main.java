@@ -1,5 +1,5 @@
 import java.util.*;
-public class  QuickPayProject{
+public class  Main {
     static Scanner input = new Scanner(System.in);
     static int UserCount = 0;
     static double[] Sbalance = new double[999];
@@ -23,7 +23,8 @@ public class  QuickPayProject{
     static int[] UserIDs = new int[100];
     static int Id = 100;
     
-static int []Favoritecount =new int[999];
+
+static int []Favoritecount =new int[999];
     static int  [][] userfavorites = new int[999][999];
     static boolean CanTrans(double Tbalance, double Sbalance, boolean ActiveAccount) {
         //Tbalance = transfer balance
@@ -157,7 +158,8 @@ public class  QuickPayProject{
             System.out.println("No Transactions Found [❌]");
         }
     }
-    
+
+    
 
     public static void userPanel() {
         boolean isRunning = true;
