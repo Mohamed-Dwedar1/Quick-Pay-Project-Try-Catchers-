@@ -234,7 +234,7 @@ public class Main1 {
 
     public static void searchRecipient() {
         System.out.print("Enter username or email to search: ");
-        String searchKey = input.next();
+        String searchKey = input.nextLine();
         boolean found = false;
         for (int i = 0; i < UserCount; i++) {
             if (Usernames[i].equalsIgnoreCase(searchKey) || Emails[i].equalsIgnoreCase(searchKey) || PhoneNumbers[i].equalsIgnoreCase(searchKey)) {
