@@ -40,8 +40,8 @@ Quick Pay is a Java-based console application designed to simulate a digital wal
 
 ## 🗂️ 4. Data Structure Explanation
 
-* **User Data Arrays:** `UserIDs`, `Usernames`, `Emails`, `UserPassword`, `PhoneNumbers`, `Sbalance`, and `ActiveAccount` store all user credentials and account statuses synchronously.
-* **Transaction Records:** `tIDS`, `Tamounts`, `Tresult`, `Tsenders`, and `Treceivers` record historical transaction logs indexed by `Tcount`.
+* **User Data Arrays:** `UserIDs`, `Usernames`, `Emails`, `UserPassword`, `PhoneNumbers`, `Sbalance`, and `ActiveAccount` store all user credentials.
+* **Transaction Records:** `tIDS`, `Tamounts`, `Tresult`, `Tsenders`, and `Treceivers` record transaction logs by `Tcount`.
 
 ---
 
@@ -49,20 +49,20 @@ Quick Pay is a Java-based console application designed to simulate a digital wal
 
 | Method Name | Description |
 | :--- | :--- |
-| `AddUser()` | Registers a new user with initialized balance and active status. |
-| `TransByPhone()` & `Trans()` | Validates and executes money transfers between accounts. |
-| `CanTrans()` | Helper function checking balance sufficiency and account status. |
-| `updateProfile()` | Enables users to update their personal profile details easily. |
+| `AddUser()` | Registers a new user. |
+| `TransByPhone()` & `Trans()` | executes money transfers between accounts. |
+| `CanTrans()` | check balance sufficiency and account status. |
+| `updateProfile()` | Enables users to update their profile details easily. |
 
 ---
 
 ## 🧪 6. Test Cases
 
-| Scenario | Input / Action | Expected Output | Status |
+| Scenario | Input / Action | Expected Output |
 | :--- | :--- | :--- | :---: |
-| **Successful Transfer** | Transfer to active receiver with sufficient balance | "transfer successful", updated balances | ✅ |
-| **Insufficient Balance** | Transfer amount > sender's current balance | "Transfer Failed" | ❌ |
-| **Non-existent User** | Transfer to an unregistered phone number | "User Not Found" | ❌ |
+| **Successful Transfer** | Transfer to active receiver with sufficient balance | "transfer successful", updated balances 
+| **Insufficient Balance** | Transfer amount > sender's current balance | "Transfer Failed"
+| **Non-existent User** | Transfer to an unregistered phone number | "User Not Found"
 
 ---
 
@@ -76,7 +76,7 @@ Quick Pay is a Java-based console application designed to simulate a digital wal
 * **Step 4️⃣:** 
   * **Admin Panel:** Choose an option from 1 to 9.
   * **User Panel:** Choose an option from 1 to 12.
-* **Last Step:** Enjoy using **Quick Pay**! Don't forget to rate us ⭐⭐⭐⭐⭐!
+* **Last Step:** Enjoy using **Quick Pay**! Don't forget to rate us ⭐⭐⭐⭐⭐ On Google Play Store & Apple Store!
 
 ---
 
