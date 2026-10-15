@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main1 {
+public class Main {
 
     // ==========================================
     // 1. كل الارايز و الفاريبلز هنا
