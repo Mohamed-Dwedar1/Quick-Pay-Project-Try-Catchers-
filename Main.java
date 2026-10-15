@@ -317,6 +317,8 @@ public class Main1 {
                         updating = false;
                     }
                     break;
+                    default :
+                    System.out.println("Invalid Choice ❌ Please Choose A Number From 1 to 3 ");
             }
         }
     }
