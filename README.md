@@ -62,11 +62,17 @@ Transfering Money to A None Existint User : ..... Output : Transaction Failed ..
   * If **Number 2** Is Chosen , Please Choose An Option (`1.Register An Account` / `2.Login Account`).
 
 * **Step 4️⃣ :**  
-  * If Logged In As **Admin**... You Can Choose An Option From The Admin Panel (From 1 to 9) .  
-  * If Logged In As **User**.... You Can Choose An Option From The User Panel (From 1 to 10) .
+  * If Logged In As Admin ... You Can Choose An Option From The Admin Panel (From 1 to 9) .  
+  * If Logged In As User.... You Can Choose An Option From The User Panel (From 1 to 10) .
 
 * **Last Step :**  
   Enjoy Using Our Application **Quick Pay** ! , Please Don’t Forget To Rate Us ⭐⭐⭐⭐⭐ On Google Play Store & Apple Store !
 
 ![Quick Pay Flow Chart](./Flow%20Chart%20Try%20Catchers.jpg)
 ---
+
+### TEAM MEMBERS ###
+
+Team Leader : Mohamed Yasser
+Team Members : AbdelAziz Reda , Arwa Osama , Yasmeen AlaaEldeen
+
