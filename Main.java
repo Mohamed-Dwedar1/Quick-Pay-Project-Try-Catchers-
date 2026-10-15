@@ -806,7 +806,7 @@ public class Main1 {
         int Choice = 0;
         // Test data pre-seeded
         AddUser("Mohamed", "1234", "Mohamed@gmail.com", "01223344556");
-        AddUser("Ahmed", "12345", "Ahmed@gmail.com", "01122334456");
+        AddUser("Ezz", "12345", "Ezz@gmail.com", "01122334456");
         AddUser("Nour", "123456", "Nour@gmail.com", "01112233445");
         AddUser("Arwa", "1234567", "Arwa@gmail.com", "01111223344");
         AddUser("Yasmeen", "12345678", "Yasmeen@gmail.com", "01224455667");
