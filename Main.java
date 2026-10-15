@@ -30,7 +30,7 @@ public class  Main {
         //ActiveAccount = sender account status
         //دي الاختصرات الي هستخدمها في الكود عشان مطولش الكلام
         if (!ActiveAccount) {
-            System.out.println("your Account is blocked");
+            System.out.println("Your Account is blocked");
             return false;
         }
         //دا الجزء الي بيشوف حاله الحساب لو مفعل او لا
@@ -166,17 +166,18 @@ public class  Main {
             System.out.println("3. Back to Main Menu");
             System.out.print("Please Choose An Operation : ");
             int UserChoice = input.nextInt();
+            input.nextLine();
             switch (UserChoice) {
                 case 1:
                     System.out.println("\n=========== Welcome To Account Register ===========");
-                    System.out.println("Please Enter Your User Name :");
+                    System.out.println("Please Enter Your Username :");
                     String name = input.nextLine();
                     System.out.println("Please Enter Your Password :");
                     String pass = input.next();
                     System.out.println("Please Enter Your Email Address :");
                     String email = input.next();
                     System.out.println("Enter Your Phone Number : ");
-                    String Phone = input.nextLine();
+                    String Phone = input.next();
                     AddUser(name, pass, email, Phone);
                     System.out.println("Your Account Has Been Registered Successfully ✅ ");
                     break;
@@ -195,7 +196,7 @@ public class  Main {
                         }
                     }
                     if (UserFound) {
-                        System.out.println("Login Successfully ✅ Welcome" + Usernames[LoggedInIndex] + "\"Your Id is \"" + UserIDs[LoggedInIndex]);
+                        System.out.println("Login Successfully ✅ Welcome " + Usernames[LoggedInIndex] + "\"Your Id is \"" + UserIDs[LoggedInIndex]);
                         UserOptions(LoggedInIndex);
                     } else {
                         System.out.println("Incorrect Username Or Password [❌]");
@@ -203,7 +204,6 @@ public class  Main {
                     break;
                 case 3:
                     isRunning = false;
-                    MainMenu();
                     break;
                 default:
                     System.out.println("Invalid Choice [❌]");
@@ -288,22 +288,21 @@ public class  Main {
                 System.out.println("ID Not Found");
             }
             }
-            else{
-                input.nextLine();
-                System.out.println("Enter UserName-Email Address-Phone Number : ");
-                String k=input.nextLine();
-                boolean found1 = false;
-                for(int i=0;i<UserCount;i++){
-                    if(Usernames[i].equals(k)||Emails[i].equals(k)||PhoneNumbers[i].equals(k)){
-                        printUserdetails(i);
-                        found1=true;
-                        break;
-                    }
-                    else{
-                        System.out.println("User Not Found");
-
-                    }
+            else {
+            input.nextLine();
+            System.out.println("Enter UserName/Email Address/Phone Number : ");
+            String k = input.nextLine();
+            boolean found1 = false;
+            for (int i = 0; i < UserCount; i++) {
+                if (Usernames[i].equals(k) || Emails[i].equals(k) || PhoneNumbers[i].equals(k)) {
+                    printUserdetails(i);
+                    found1 = true;
+                    break;
                 }
+            }
+            if (found1) {
+                System.out.println("User Not Found");
+            }
             }
         }
     public static void viewAllUsers(){
@@ -343,7 +342,7 @@ public class  Main {
             if(Tresult[i]){
                 System.out.println("status: Success ");
             }else{
-                System.out.println("status: Faild ");
+                System.out.println("status: Failed ");
             }
         }
     }
@@ -371,7 +370,7 @@ public class  Main {
         System.out.println("Enter User ID: ");
         int iD=input.nextInt();
         boolean found4=false;
-        for(int i=0;i<ActiveAccount.length;i++){
+        for(int i=0;i<UserCount;i++){
             if(iD==UserIDs[i]){
                 found4=true;
                 if(ActiveAccount[i]){
@@ -381,9 +380,7 @@ public class  Main {
                     ActiveAccount[i]=true;
                     System.out.println("You Unblocked This Account");
                 }
-
             }
-
         }
         if(found4==false){
             System.out.println("User Not Found");
@@ -444,10 +441,10 @@ public class  Main {
                 for(int i=0;i<Emails.length;i++){
                     if(Email1.equals(Emails[i])){
                         found5=true;
-                        System.out.println("New Email Adress:");
+                        System.out.println("New Email Address:");
                         String Email2=input.next();
                         Emails[i]=Email2;
-                        System.out.println("Email Adress Updated Successfully! ");
+                        System.out.println("Email Address Updated Successfully! ");
                     }
                 }
                 break;
@@ -526,33 +523,6 @@ public class  Main {
             }
         }
     }
-    public static void Depos (int index){
-// Depos=Deposit
-System.out.println("Enter amount to deposit : ");
-double amount = input .nextDouble();
-if (amount <=0){
-    System.out.println("inveld deposit amount!"):
-    return;
-}
-Sbalance[Sindex] += amount;
-System.out.println("Deposit succseful !");
-System.out.println ("your new balance is:"+Sbalance[Sindex]+"EGP");
-    }
-     public static void Withdraw(int Sindex){
-        System.out.println("Enter amount to withdraw:");
-        double amount=input.nextDouble();
-        if (amount<=0){
-            System.out.println("invalid withdraw amount!");
-            return;
-        }
-        if (amount >Sbalance[Sindex]){
-            System.out.println("insufficient balance!");
-            return;
-        }
-        Sbalance[Sindex]-=amount;
-        System.out.println("Withdraw successful!");
-        System.out.println("your new balance is:"+Sbalance[Sindex]+"EGP");
-     }
     public static void showMyBalance(int Sindex) {
         System.out.println("\nYour Current Balance is: " + Sbalance[Sindex] + " EGP");
     }
@@ -644,7 +614,7 @@ System.out.println ("your new balance is:"+Sbalance[Sindex]+"EGP");
             }
         }
         if (!found) {
-            System.out.println("No user found with this informatio [❌]");
+            System.out.println("No user found with this information [❌]");
         }
     }
     public static void viewProfile(int Sindex) {
@@ -716,60 +686,56 @@ System.out.println ("your new balance is:"+Sbalance[Sindex]+"EGP");
     }
 
     public static void UserOptions ( int Sindex){
-        System.out.println("\n=============== User Panel ===============");
-        System.out.println("1.Show Balance ");
-        System.out.println("2. Transfer Money ");
-        System.out.println("3. Transaction History ");
-        System.out.println("4. Show Favorites ");
-        System.out.println("5. Add Favorite ");
-        System.out.println("6. Remove Favorite ");
-        System.out.println("7. Search Recipient ");
-        System.out.println("8. View Profile ");
-        System.out.println("9. Update Profile ");
-        System.out.println("10. Deposit Money");
-        System.out.println("11.Withdraw Money")
-        System.out.println("\n12. Logout ");
-        System.out.println("Please Choose An Option To Proceed ");
-        int UserOption = input.nextInt();
-        switch (UserOption) {
-            case 1:
-                showMyBalance(Sindex);
-                break;
-            case 2:
-                TransByPhone(Sindex);
-                break;
-            case 3:
-                STransHistory(Sindex);
-                break;
-            case 4:
-                showFavorites(Sindex);
-                break;
-            case 5:
-                addFavorite(Sindex);
-                break;
-            case 6:
-                removeFavorite(Sindex);
-                break;
-            case 7:
-                searchRecipient();
-                break;
-            case 8:
-                viewProfile(Sindex);
-                break;
-            case 9:
-                updateProfile();
-                break;
-            case 10:
-                depos(Sindex);
-                break;
-            case 11:
-                Withdraw(Sindex);
-                break;
-            case 12:
-                System.out.println("Logging Out ......... Thank You For Using Quick Pay App , GoodBye \uD83D\uDC4B . ");
-                return;
-            default:
-                System.out.println("Invalid choice! Please enter a number between 1 and 12.");
+        boolean userLogged = true;
+        while (userLogged) {
+            System.out.println("\n=============== User Panel ===============");
+            System.out.println("1.Show Balance ");
+            System.out.println("2. Transfer Money ");
+            System.out.println("3. Transaction History ");
+            System.out.println("4. Show Favorites ");
+            System.out.println("5. Add Favorite ");
+            System.out.println("6. Remove Favorite ");
+            System.out.println("7. Search Recipient ");
+            System.out.println("8. View Profile ");
+            System.out.println("9. Update Profile ");
+            System.out.println("\n10. Logout ");
+            System.out.println("Please Choose An Option To Proceed ");
+            int UserOption = input.nextInt();
+            switch (UserOption) {
+                case 1:
+                    showMyBalance(Sindex);
+                    break;
+                case 2:
+                    TransByPhone(Sindex);
+                    break;
+                case 3:
+                    STransHistory(Sindex);
+                    break;
+                case 4:
+                    showFavorites(Sindex);
+                    break;
+                case 5:
+                    addFavorite(Sindex);
+                    break;
+                case 6:
+                    removeFavorite(Sindex);
+                    break;
+                case 7:
+                    searchRecipient();
+                    break;
+                case 8:
+                    viewProfile(Sindex);
+                    break;
+                case 9:
+                    updateProfile();
+                    break;
+                case 10:
+                    System.out.println("Logging Out ......... Thank You For Using Quick Pay App , GoodBye \uD83D\uDC4B . ");
+                    userLogged = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please enter a number between 1 and 10.");
+            }
         }
     }
     public static void MainMenu () {
