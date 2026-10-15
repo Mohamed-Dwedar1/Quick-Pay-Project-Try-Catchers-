@@ -3,8 +3,9 @@ import java.util.*;
 public class Main1 {
 
     // ==========================================
-    // 1. GLOBAL VARIABLES & ARRAYS
+    // 1. كل الارايز و الفاريبلز هنا
     // ==========================================
+
     static Scanner input = new Scanner(System.in);
     static int UserCount = 0;
     static double[] Sbalance = new double[999];
@@ -26,8 +27,9 @@ public class Main1 {
 
 
     // ==========================================
-    // 2. CORE & HELPER FUNCTIONS
+    // 2. النواة الاساسية للبروجكت و ارايز مساعدة
     // ==========================================
+
     public static void AddUser(String name, String Passwords, String Email, String PhoneNumber) {
         UserIDs[UserCount] = Id;
         Usernames[UserCount] = name;
@@ -76,8 +78,9 @@ public class Main1 {
 
 
     // ==========================================
-    // 3. FINANCIAL & TRANSACTION METHODS
+    // 3. كل ما يخص الفلوس و ميثودز التحويلات
     // ==========================================
+
     static void Trans(int Sindex, int Rindex, double amount) {
         if (Sindex < 0 || Sindex >= UserCount || Rindex < 0 || Rindex >= UserCount) {
             System.out.println("invalid account index");
@@ -154,12 +157,13 @@ public class Main1 {
     }
 
 
-    // ==========================================
-    // 4. USER FEATURES (Favorites, Profile, History)
-    // ==========================================
+    // ==============================================
+    // 4. مميزات اليوزر من حيث الاضافة او التحويل او يشوف الرصيد
+    // ===============================================
+
     public static void addFavorite(int Sindex) {
         System.out.print("Enter the username or email to add to favorites: ");
-        String textInput = input.nextLine();
+        String textInput = input.next();
         int friendIndex = -1;
         for (int i = 0; i < UserCount; i++) {
             if (Usernames[i].equalsIgnoreCase(textInput) || Emails[i].equalsIgnoreCase(textInput)) {
@@ -234,7 +238,7 @@ public class Main1 {
 
     public static void searchRecipient() {
         System.out.print("Enter username or email to search: ");
-        String searchKey = input.nextLine();
+        String searchKey = input.next();
         boolean found = false;
         for (int i = 0; i < UserCount; i++) {
             if (Usernames[i].equalsIgnoreCase(searchKey) || Emails[i].equalsIgnoreCase(searchKey) || PhoneNumbers[i].equalsIgnoreCase(searchKey)) {
@@ -317,8 +321,6 @@ public class Main1 {
                         updating = false;
                     }
                     break;
-                    default :
-                    System.out.println("Invalid Choice ❌ Please Choose A Number From 1 to 3 ");
             }
         }
     }
@@ -352,8 +354,9 @@ public class Main1 {
 
 
     // ==========================================
-    // 5. ADMIN PANEL METHODS
+    // 5. ميثودز الادمن بانل
     // ==========================================
+
     public static void ShowStatistics() {
         System.out.println("Total Number Of Registered Users: " + UserCount);
         int blockedCount = 0;
@@ -586,7 +589,7 @@ public class Main1 {
 
 
     // ==========================================
-    // 6. MENUS & PANELS (AdminPanel, UserPanel, Main)
+    // 6. القوائم بتاعت الاختيارات كلها للادمن واليوزر
     // ==========================================
     public static void LogInmenu() {
         System.out.println("=============== WELCOME TO LOG IN PAGE ===============");
@@ -686,6 +689,7 @@ public class Main1 {
             System.out.println("\n12. Logout ");
             System.out.print("Please Choose An Option To Proceed: ");
             int UserOption = input.nextInt();
+            input.nextLine();
             switch (UserOption) {
                 case 1:
                     showMyBalance(Sindex);
@@ -737,7 +741,7 @@ public class Main1 {
             System.out.println("1. Register New Account");
             System.out.println("2. Login to Your Account");
             System.out.println("3. Back to Main Menu");
-            System.out.print("Please Choose A Number from 1 to 3 : ");
+            System.out.print("Please Choose An Operation : ");
             int UserChoice = input.nextInt();
             input.nextLine();
             switch (UserChoice) {
@@ -795,12 +799,12 @@ public class Main1 {
         System.out.println();
         System.out.println("1 : Login As Admin");
         System.out.println("2 : Login As User");
-        System.out.println("3 : Logout");
+        System.out.println("3 : Exit Program");
         System.out.print("Please Choose An Operation : ");
     }
 
     // ==========================================
-    // 7. MAIN METHOD
+    // 7.ميثود ال Main
     // ==========================================
     public static void main(String[] args) {
         int Choice = 0;
