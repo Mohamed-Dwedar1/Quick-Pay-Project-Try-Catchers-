@@ -159,7 +159,7 @@ public class Main1 {
     // ==========================================
     public static void addFavorite(int Sindex) {
         System.out.print("Enter the username or email to add to favorites: ");
-        String textInput = input.next();
+        String textInput = input.nextLine();
         int friendIndex = -1;
         for (int i = 0; i < UserCount; i++) {
             if (Usernames[i].equalsIgnoreCase(textInput) || Emails[i].equalsIgnoreCase(textInput)) {
