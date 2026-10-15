@@ -523,6 +523,33 @@ public class  Main {
             }
         }
     }
+    public static void deposit (int Sindex){
+        System.out.println("Enter amount to deposit :");
+        double amount= input.nextDouble();
+        if (amount<=0){
+            System.out.println("invalid deposit amount!❌");
+            return;
+        }
+        Sbalance[Sindex]+=amount;
+        System.out.println("Deposit successfui!✅");
+        System.out.println("your new balance is "+Sbalance[Sindex]+"EGP")
+    }
+    public static void withdraw(int index)
+    {
+        System.out.println("Enter amount to withdraw :");
+        double amount=input.nextDouble();
+        if (amount<=0){
+            System.out.println("invalid withdraw amount !❌");
+            return;
+        }
+        if (amount>Sbalance[Sindex]){
+            System.out.println("insufficient balance!❌")
+            return;
+        }
+        Sbalance[Sindex]-=amount;
+        System.out.println("Withdraw successful!✅")
+        System.out.println("your new balance is :"+Sbalance[Sindxe]+"EGP")
+    }
     public static void showMyBalance(int Sindex) {
         System.out.println("\nYour Current Balance is: " + Sbalance[Sindex] + " EGP");
     }
@@ -698,7 +725,9 @@ public class  Main {
             System.out.println("7. Search Recipient ");
             System.out.println("8. View Profile ");
             System.out.println("9. Update Profile ");
-            System.out.println("\n10. Logout ");
+            System.out.println("10. Deposit Money");
+            System.out.println("11. Withdraw Money");
+            System.out.println("\n12. Logout ");
             System.out.println("Please Choose An Option To Proceed ");
             int UserOption = input.nextInt();
             switch (UserOption) {
@@ -730,11 +759,17 @@ public class  Main {
                     updateProfile();
                     break;
                 case 10:
+                    deposit(Sindex);
+                    break;
+                case 11:
+                    withdraw(Sindex);
+                    break;
+                case 12:
                     System.out.println("Logging Out ......... Thank You For Using Quick Pay App , GoodBye \uD83D\uDC4B . ");
                     userLogged = false;
                     break;
                 default:
-                    System.out.println("Invalid choice! Please enter a number between 1 and 10.");
+                    System.out.println("Invalid choice! Please enter a number between 1 and 12.");
             }
         }
     }
