@@ -287,8 +287,8 @@ public class  Main {
             if (!found) {
                 System.out.println("ID Not Found");
             }
-            }
-            else {
+        }
+        else {
             input.nextLine();
             System.out.println("Enter UserName/Email Address/Phone Number : ");
             String k = input.nextLine();
@@ -303,8 +303,8 @@ public class  Main {
             if (found1) {
                 System.out.println("User Not Found");
             }
-            }
         }
+    }
     public static void viewAllUsers(){
         System.out.println("All users : ");
         for(int i=0;i<UserCount;i++){
@@ -532,9 +532,9 @@ public class  Main {
         }
         Sbalance[Sindex]+=amount;
         System.out.println("Deposit successfui!✅");
-        System.out.println("your new balance is "+Sbalance[Sindex]+"EGP")
+        System.out.println("your new balance is "+Sbalance[Sindex]+"EGP");
     }
-    public static void withdraw(int index)
+    public static void withdraw(int Sindex)
     {
         System.out.println("Enter amount to withdraw :");
         double amount=input.nextDouble();
@@ -542,13 +542,13 @@ public class  Main {
             System.out.println("invalid withdraw amount !❌");
             return;
         }
-        if (amount>Sbalance[Sindex]){
-            System.out.println("insufficient balance!❌")
+        if (amount>Sbalance[ Sindex]){
+            System.out.println("insufficient balance!❌");
             return;
         }
         Sbalance[Sindex]-=amount;
-        System.out.println("Withdraw successful!✅")
-        System.out.println("your new balance is :"+Sbalance[Sindxe]+"EGP")
+        System.out.println("Withdraw successful!✅");
+        System.out.println("your new balance is :"+Sbalance[Sindex]+"EGP");
     }
     public static void showMyBalance(int Sindex) {
         System.out.println("\nYour Current Balance is: " + Sbalance[Sindex] + " EGP");
