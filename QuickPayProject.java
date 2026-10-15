@@ -1,5 +1,5 @@
 import java.util.*;
-public class  QuickPayProject {
+public class  QuickPayProject{
     static Scanner input = new Scanner(System.in);
     static int UserCount = 0;
     static double[] Sbalance = new double[999];
@@ -22,7 +22,9 @@ public class  QuickPayProject {
     static String[] PhoneNumbers = new String[100];
     static int[] UserIDs = new int[100];
     static int Id = 100;
-
+    
+static int []Favoritecount =new int[999];
+    static int  [][] userfavorites = new int[999][999];
     static boolean CanTrans(double Tbalance, double Sbalance, boolean ActiveAccount) {
         //Tbalance = transfer balance
         //Sbalance = sender balance
@@ -155,6 +157,7 @@ public class  QuickPayProject {
             System.out.println("No Transactions Found [❌]");
         }
     }
+    
 
     public static void userPanel() {
         boolean isRunning = true;
@@ -287,6 +290,168 @@ public class  QuickPayProject {
                 }
             }
         }
+    public static void showMyBalance(int Sindex) {
+        System.out.println("\nYour Current Balance is: " + Sbalance[Sindex] + " EGP");
+    }
+    public static void addFavorite(int Sindex) {
+        System.out.print("Enter the username or email to add to favorites: ");
+        String textInput = input.next();
+        int friendIndex = -1;
+        for (int i = 0; i < UserCount; i++) {
+            if (Usernames[i].equalsIgnoreCase(textInput) || Emails[i].equalsIgnoreCase(textInput)) {
+                friendIndex = i;
+                break;
+            }
+        }
+        if (friendIndex == -1) {
+            System.out.println("This user does not exist in the system [❌].");
+            return;
+        }
+        if (Sindex == friendIndex) {
+            System.out.println("You cannot add yourself to your favorites list [❌].");
+            return;
+        }
+        for (int i = 0; i < Favoritecount[Sindex]; i++) {
+            if (userfavorites[Sindex][i] == friendIndex) {
+                System.out.println("This user is already in your favorites list!");
+                return;
+            }
+        }
+        int currentCount = Favoritecount[Sindex];
+        userfavorites[Sindex][currentCount] = friendIndex;
+        Favoritecount[Sindex]++;
+        System.out.println("Added to favorites successfully! ✅");
+    }
+        public static void removeFavorite(int Sindex) {
+        System.out.print("Enter the username or email to remove from favorites: ");
+        String textInput = input.next();
+        int friendIndex = -1;
+        for (int i = 0; i < UserCount; i++) {
+            if (Usernames[i].equalsIgnoreCase(textInput) || Emails[i].equalsIgnoreCase(textInput)) {
+                friendIndex = i;
+                break;
+            }
+        }
+        if (friendIndex == -1) {
+            System.out.println("This user does not exist in the system [❌].");
+            return;
+        }
+        int removeIndex = -1;
+        for (int i = 0; i < Favoritecount[Sindex]; i++) {
+            if (userfavorites[Sindex][i] == friendIndex) {
+                removeIndex = i;
+                break;
+            }
+        }
+        if (removeIndex == -1) {
+            System.out.println("This user is not in your favorites list [❌].");
+            return;
+        }
+        for (int i = removeIndex; i < Favoritecount[Sindex] - 1; i++) {
+            userfavorites[Sindex][i] = userfavorites[Sindex][i + 1];
+        }
+        Favoritecount[Sindex]--;
+        System.out.println("Removed from favorites successfully! ✅");
+    }
+    public static void showFavorites(int Sindex) {
+        System.out.println("\n--- Your Favorites List ---");
+        int count = Favoritecount[Sindex];
+        if (count == 0) {
+            System.out.println("Your favorites list is empty.");
+        } else {
+            for (int i = 0; i < count; i++) {
+                int friendIdx = userfavorites[Sindex][i];
+                System.out.println("- " + Usernames[friendIdx] + " (Email: " + Emails[friendIdx] + ")");
+            }
+        }
+    }
+    public static void searchRecipient() {
+        System.out.print("Enter username or email to search: ");
+        String searchKey = input.next();
+        boolean found = false;
+        for (int i = 0; i < UserCount; i++) {
+            if (Usernames[i].equalsIgnoreCase(searchKey) || Emails[i].equalsIgnoreCase(searchKey)|| PhoneNumbers[i].equalsIgnoreCase(searchKey)) {
+                System.out.println("\n--- User Found ---");
+                System.out.println("Name: " + Usernames[i]);
+                System.out.println("Email: " + Emails[i]);
+                System.out.println("Phone: " + PhoneNumbers[i]);
+                System.out.println("ID: " + UserIDs[i]);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No user found with this informatio [❌]");
+        }
+    }
+    public static void viewProfile(int Sindex) {
+        System.out.println("\n--- Your Profile Details ---");
+        System.out.println("ID: " + UserIDs[Sindex]);
+        System.out.println("Name: " + Usernames[Sindex]);
+        System.out.println("Email: " + Emails[Sindex]);
+        System.out.println("Phone: " + PhoneNumbers[Sindex]);
+       System.out.println("Balance: " + Sbalance[Sindex] + " EGP");
+    }
+public static void updateProfile() {
+        boolean updating = true;
+        for (; updating; ) {
+            System.out.print("What do you want to update?\n1. Username\n2. Email\n3. Phone Number\nEnter your choice: \n");
+            int choice = input.nextInt();
+            if (choice < 1 || choice > 3) {
+                System.out.println("Invalid choice! Please try again. ❌");
+                continue;
+            }
+            System.out.print("Enter Your ID  to check ");
+            int searchKey = input.nextInt();
+            int targetIndex = -1;
+            for (int i = 0; i < Usernames.length; i++) {
+                if  (UserIDs[i]==searchKey)  {
+                    targetIndex = i;
+                    break;
+                }
+            }
+            if (targetIndex == -1) {
+                System.out.println("No user found with this information! Please try again. [❌]");
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter new username: ");
+                    String newUsername = input.next();
+                    if (newUsername.equals(Usernames[targetIndex])) {
+                        System.out.println("This is already your current username! ❌");
+                    } else {
+                        Usernames[targetIndex] = newUsername;
+                        System.out.println("Username updated successfully! ✅\n");
+                        updating = false;
+                    }
+                    break;
+                case 2:
+                    System.out.print("Enter new email: ");
+                    String newEmail = input.next();
+                    if (newEmail.equals(Emails[targetIndex])) {
+                        System.out.println("This is already your current email! ❌");
+                    } else {
+                        Emails[targetIndex] = newEmail;
+                        System.out.println("Email updated successfully! ✅");
+                        updating = false;
+                    }
+                    break;
+                case 3:
+                    System.out.print("Enter new phone number: ");
+                    String newPhone = input.next();
+                    if (newPhone.equals(PhoneNumbers[targetIndex])) {
+                        System.out.println("This is already your current phone number! ❌");
+                    } else {
+                        PhoneNumbers[targetIndex] = newPhone;
+                        System.out.println("Phone updated successfully! ✅");
+                        updating = false;
+                    }
+                    break;
+            }
+        }
+    }
+    
         public static void UserOptions ( int Sindex){
             System.out.println("\n=============== User Panel ===============");
             System.out.println("1.Show Balance ");
@@ -303,7 +468,7 @@ public class  QuickPayProject {
             int UserOption = input.nextInt();
             switch (UserOption) {
                 case 1:
-                    //
+                    showMyBalance(Sindex);
                     break;
                 case 2:
                     TransByPhone(Sindex);
@@ -312,26 +477,28 @@ public class  QuickPayProject {
                     STransHistory(Sindex);
                     break;
                 case 4:
-                    //
+                    addFavorite(Sindex);
                     break;
                 case 5:
-                    //
+                    removeFavorite(Sindex);
                     break;
                 case 6:
-                    //
+                    showFavorites(Sindex);
                     break;
                 case 7:
-                    //
+                    searchRecipient();
                     break;
                 case 8:
-                    //
+                    viewProfile(Sindex);
                     break;
                 case 9:
-                    //
+                    updateProfile();
                     break;
                 case 10:
                     System.out.println("Logging Out ......... Thank You For Using Quick Pay App , GoodBye \uD83D\uDC4B . ");
-                    break;
+                return;
+                default:
+        System.out.println("Invalid choice! Please enter a number between 1 and 10.");
             }
         }
         public static void MainMenu () {
