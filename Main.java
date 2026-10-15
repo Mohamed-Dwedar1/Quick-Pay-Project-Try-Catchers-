@@ -737,7 +737,7 @@ public class Main1 {
             System.out.println("1. Register New Account");
             System.out.println("2. Login to Your Account");
             System.out.println("3. Back to Main Menu");
-            System.out.print("Please Choose An Operation : ");
+            System.out.print("Please Choose A Number from 1 to 3 : ");
             int UserChoice = input.nextInt();
             input.nextLine();
             switch (UserChoice) {
