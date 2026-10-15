@@ -271,27 +271,27 @@ public class  Main {
         System.out.println("Search by User ID (1) or Name/Email/Phone (2)");
         int choice=input.nextInt();
 
-        if(choice==1){
+        if(choice==1) {
             input.nextLine();
             System.out.println("Enter the ID: ");
-            int id=input.nextInt();
+            int id = input.nextInt();
 
-            boolean found =false;
-            for(int i=0; i<UserCount;i++){
-                if(UserIDs[i]==id){
+            boolean found = false;
+            for (int i = 0; i < UserCount; i++) {
+                if (UserIDs[i] == id) {
                     printUserdetails(i);
-                    found=true;
+                    found = true;
                     break;
-                }}
-            if(!found){
+                }
+            }
+            if (!found) {
                 System.out.println("ID Not Found");
-
+            }
             }
             else{
                 input.nextLine();
-                System.out.println("Enter User Name-Email Address-Phone Number : ");
-                String k=input.next();
-                input.nextLine();
+                System.out.println("Enter UserName-Email Address-Phone Number : ");
+                String k=input.nextLine();
                 boolean found1 = false;
                 for(int i=0;i<UserCount;i++){
                     if(Usernames[i].equals(k)||Emails[i].equals(k)||PhoneNumbers[i].equals(k)){
@@ -306,11 +306,12 @@ public class  Main {
                 }
             }
         }
-    }
     public static void viewAllUsers(){
         System.out.println("All users : ");
         for(int i=0;i<UserCount;i++){
             printUserdetails(i);
+            System.out.println("==================================");
+            System.out.println();
         }
     }
     public static void viewUserDetails(){
@@ -350,7 +351,7 @@ public class  Main {
         System.out.println("Enter User ID: ");
         int iD=input.nextInt();
         boolean found3=false;
-        for(int i=0;i<ActiveAccount.length;i++){
+        for(int i=0;i<UserCount;i++){
             if(iD==UserIDs[i]){
                 found3=true;
                 if(!ActiveAccount[i]){
@@ -438,7 +439,7 @@ public class  Main {
                 }
                 break;
             case 4:
-                System.out.println("Enter Email Adress To Update: ");
+                System.out.println("Enter Email Address To Update: ");
                 String Email1=input.next();
                 for(int i=0;i<Emails.length;i++){
                     if(Email1.equals(Emails[i])){
