@@ -89,7 +89,7 @@ public class  Main {
 
     }
 
-    static int Freciver(int PhoneNumber) {
+    static int Freciver(String PhoneNumber) {
         //Freciver = find reciver
         for (int i = 0; i < UserCount; i++) {
             if (PhoneNumbers[i].equals(PhoneNumber)) {
@@ -102,7 +102,7 @@ public class  Main {
     //الجزء ده بيشوف لو الرقم الي دخلته موجود في الحسابات ولا لا وبيرجعلك الاي اندكس بتاعه لو موجود و بيرجعلك -1 لو مش موجود
     static void TransByPhone(int Sindex) {
         System.out.println("Enter the Phone Number of the Receiver : ");
-        int PhoneNumber = input.nextInt();
+        String PhoneNumber = input.next();
         int Rindex = Freciver(PhoneNumber);
         if (Rindex == -1) {
             System.out.println("Receiver Not Found [❌]");
