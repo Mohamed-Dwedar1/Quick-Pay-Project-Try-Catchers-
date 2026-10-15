@@ -1,78 +1,89 @@
 # 🚀 Quick Pay Project
-### Hello User 👋 Thank You For Downloading Our Application **Quick Pay** 😍 .
+
+> Hello User 👋 Thank You For Downloading Our Application **Quick Pay** 😍.
+
 ---
 
-1. ### Project Overview ###
-Make Managing Your Money Much Easier And Smoother!
-Quick Pay is a Java-based console application designed to simulate a digital wallet system.
----
-2. ### Functional Requirements ###
-👤 User Features: 
-1️⃣ **Simple User Interface Menu .** 
-2️⃣ **Account Management: Register a new account with a unique ID.**
-3️⃣ **Gathered All Your Money Management Options** In 1️⃣ User Panel .  
-4️⃣ **Money Transfer Became Easy ! Only Phone Number and Username are required to Transfter Money** !
-5️⃣ **Transaction History: View detailed logs of all sent and received transactions.**
-6️⃣ **Favourite Menu : Add , Remove , Show Your Favourite Contacts**
-7️⃣ **Recipient Search: Search for other users by username, email, or phone number.**
+## 💡 1. Project Overview
 
-🛠️ Admin Features:
-Admin Login : Easy Admin Authentication Method using (admin/123).
-Show Statistics Option : Allowing Admin to See all registered Accounts / Blocked / unblocked Easily .
-User Search : Search for any user and view all his account information.
+**Make Managing Your Money Much Easier And Smoother!**  
+Quick Pay is a Java-based console application designed to simulate a digital wallet system efficiently.
+
 ---
 
-3. Business Rules :
-   
-User Cannot Transfer money to his own account
-No transfers to blocked account
-Transactions are rejected on Transfers <= 0 Or On Blocked Accounts .
-Favourite Menu Rules : Users Cannot add themselves to Favourite menu or Add a user already Exists.
----
-4. Data Structure Explanation
+## ✨ 2. Functional Requirements
 
-User Data Arrays: UserIDs, Usernames, Emails, UserPassword, PhoneNumbers, Sbalance, and ActiveAccount Store User Credentials .
-Transaction Records: tIDS, Tamounts, Tresult, Tsenders, and Treceivers record historical transaction logs  by Tcount .
----
-5. Methods Doccumentation :
+### 👤 User Features:
+* 1️⃣ **Simple User Interface Menu:** Easy navigation across panels.
+* 2️⃣ **Account Management:** Register a new account with a unique system ID.
+* 3️⃣ **All-in-One Options:** Gathered all money management options in one User Panel.
+* 4️⃣ **Easy Money Transfers:** Only Phone Number and Username are required to transfer money!
+* 5️⃣ **Transaction History:** View detailed logs of all sent and received transactions.
+* 6️⃣ **Favorites Menu:** Add, remove, and show your favorite contacts.
+* 7️⃣ **Recipient Search:** Search for other users by username, email, or phone number.
 
-AddUser(): Registers a new user .
-TransByPhone(Sindex) & Trans(): Validates Transfering Money Between Users .
-CanTrans() : Check Whether a user can transfer money or Not .
-updateProfile(): Allows users to update their profile Easily .
+### 🛠️ Admin Features:
+* 🔑 **Admin Authentication:** Secure and easy login method using (`admin` / `123`).
+* 📊 **Show Statistics Option:** Allows Admin to view all registered, blocked, and active accounts easily.
+* 🔍 **User Search:** Search for any user and view complete account information.
+
 ---
 
-6. Test Cases :
+## 📜 3. Business Rules
 
-Successful Money Transfer ..... Transfering Money from sender account to receiver with sufficent balance ..... Output : "transfer successful", updated sender and receiver balances.
-Insufficient Balance : if the transfered Money balance is greater than the sender’s Current Balance ...... Output : "Transfer Failed" . 
-Transfering Money to A None Existint User : ..... Output : Transaction Failed ... User Not Found .
+* 🚫 Users **cannot** transfer money to their own account.
+* 🚫 Transfers to or from **blocked accounts** are strictly rejected.
+* 🚫 Transactions with amounts **$\le 0$** are completely rejected.
+* ⭐ **Favorites Rules:** Users cannot add themselves or duplicate an already existing user in their favorites list.
+
 ---
 
-### ⚠ How To Use Our Application : Step By Step Tutorial  🤔
+## 🗂️ 4. Data Structure Explanation
 
-* **Step 1️⃣ :**  
-  Press The Start Button To Proceed .
+* **User Data Arrays:** `UserIDs`, `Usernames`, `Emails`, `UserPassword`, `PhoneNumbers`, `Sbalance`, and `ActiveAccount` store all user credentials and account statuses synchronously.
+* **Transaction Records:** `tIDS`, `Tamounts`, `Tresult`, `Tsenders`, and `Treceivers` record historical transaction logs indexed by `Tcount`.
 
-* **Step 2️⃣ :**  
-  Choose An Option From The Main Menu (From 1 to 3) .
-
-* **Step 3️⃣ :**  
-  * If **Number 1** Is Chosen , Please Enter Your Credentials To Proceed .  
-  * If **Number 2** Is Chosen , Please Choose An Option (`1.Register An Account` / `2.Login Account`).
-
-* **Step 4️⃣ :**  
-  * If Logged In As Admin ... You Can Choose An Option From The Admin Panel (From 1 to 9) .  
-  * If Logged In As User.... You Can Choose An Option From The User Panel (From 1 to 10) .
-
-* **Last Step :**  
-  Enjoy Using Our Application **Quick Pay** ! , Please Don’t Forget To Rate Us ⭐⭐⭐⭐⭐ On Google Play Store & Apple Store !
-
-![Quick Pay Flow Chart](./Flow%20Chart%20Try%20Catchers.jpg)
 ---
 
-### TEAM MEMBERS ###
+## 🛠️ 5. Methods Documentation
 
-Team Leader : Mohamed Yasser
-Team Members : AbdelAziz Reda , Arwa Osama , Yasmeen AlaaEldeen
+| Method Name | Description |
+| :--- | :--- |
+| `AddUser()` | Registers a new user with initialized balance and active status. |
+| `TransByPhone()` & `Trans()` | Validates and executes money transfers between accounts. |
+| `CanTrans()` | Helper function checking balance sufficiency and account status. |
+| `updateProfile()` | Enables users to update their personal profile details easily. |
 
+---
+
+## 🧪 6. Test Cases
+
+| Scenario | Input / Action | Expected Output | Status |
+| :--- | :--- | :--- | :---: |
+| **Successful Transfer** | Transfer to active receiver with sufficient balance | "transfer successful", updated balances | ✅ |
+| **Insufficient Balance** | Transfer amount > sender's current balance | "Transfer Failed" | ❌ |
+| **Non-existent User** | Transfer to an unregistered phone number | "User Not Found" | ❌ |
+
+---
+
+## ⚠ How To Use Our Application: Step-By-Step Tutorial 🤔
+
+* **Step 1️⃣:** Press the **Start** button to proceed.
+* **Step 2️⃣:** Choose an option from the **Main Menu** (From 1 to 3).
+* **Step 3️⃣:** 
+  * If **1** is chosen: Enter Admin credentials to proceed.
+  * If **2** is chosen: Choose an option (`1. Register Account` / `2. Login`).
+* **Step 4️⃣:** 
+  * **Admin Panel:** Choose an option from 1 to 9.
+  * **User Panel:** Choose an option from 1 to 12.
+* **Last Step:** Enjoy using **Quick Pay**! Don't forget to rate us ⭐⭐⭐⭐⭐!
+
+---
+
+## 👥 TEAM MEMBERS
+
+* **Team Leader:** Mohamed Yasser
+* **Team Members:** 
+  * AbdelAziz Reda
+  * Arwa Osama
+  * Yasmeen AlaaEldeen
